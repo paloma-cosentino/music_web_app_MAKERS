@@ -18,8 +18,24 @@ artist_id=2
 # Expected response (200 OK)
 (No content)
 
-```
 
+# Request:
+POST /artists
+
+# With body parameters:
+name=Wild nothing
+genre=Indie
+
+# Expected response (200 OK)
+(No content)
+
+# Then subsequent request:
+GET /artists
+
+# Expected response (200 OK)
+Pixies, ABBA, Taylor Swift, Nina Simone, Wild nothing
+
+```
 ## 2. Create Examples as Tests
 
 _Go through each route and write down one or more example responses._
@@ -34,6 +50,21 @@ _Include the status code and the response body._
 #   release_year=2022
 #   artist_id = 2
 #  Expected response (200 OK):
+```
+
+```
+POST / artists
+    #Parameters:
+    Name = Wild Nothing
+    genre=Indie
+
+    # Expected response (200 OK)
+    (No content)
+
+GET /artists
+    # Expected response (200 OK)
+Pixies, ABBA, Taylor Swift, Nina Simone, Wild nothing
+
 ```
 
 ## 3. Test-drive the Route

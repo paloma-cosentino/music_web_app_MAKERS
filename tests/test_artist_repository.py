@@ -5,13 +5,11 @@ from lib.artist import Artist
 When we call ArtistRepository#all
 We get a list of Artist objects reflecting the seed data.
 """
-def test_get_all_records(db_connection): # See conftest.py to learn what `db_connection` is.
-    db_connection.seed("seeds/music_web.sql") # Seed our database with some test data
-    repository = ArtistRepository(db_connection) # Create a new ArtistRepository
+def test_get_all_records(db_connection): 
+    db_connection.seed("seeds/music_web.sql") 
+    repository = ArtistRepository(db_connection) 
+    artists = repository.all() 
 
-    artists = repository.all() # Get all artists
-
-    # Assert on the results
     assert artists == [
         Artist(1, "Pixies", "Rock"),
         Artist(2, "ABBA", "Pop"),
@@ -56,7 +54,7 @@ We remove a record from the database.
 def test_delete_record(db_connection):
     db_connection.seed("seeds/music_web.sql")
     repository = ArtistRepository(db_connection)
-    repository.delete(3) # Apologies to Taylor Swift fans
+    repository.delete(3) 
 
     result = repository.all()
     assert result == [
